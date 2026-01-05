@@ -11,9 +11,13 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import os
 
 # === 1. Setup DagsHub & MLflow ===
+# === 1. Setup DagsHub & MLflow ===
 print("Initializing DagsHub & MLflow...")
-dagshub.init(repo_owner='RioSudrajat', repo_name='MSML', mlflow=True)
-mlflow.set_experiment("Bank Marketing Experiment")
+if not os.getenv("MLFLOW_TRACKING_URI"):
+    dagshub.init(repo_owner='RioSudrajat', repo_name='MSML', mlflow=True)
+    mlflow.set_experiment("Bank Marketing Experiment")
+else:
+    print("CI Environment detected. Using existing MLFLOW_TRACKING_URI.")
 
 # === 2. Load Data ===
 print("Loading data...")
