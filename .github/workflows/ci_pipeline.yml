@@ -50,9 +50,8 @@ jobs:
           # For this submission, we can try to fetch the latest run via Python script
           python -c "
           import mlflow
-          import dagshub
           import os
-          dagshub.init(repo_owner='${{ secrets.DAGSHUB_USERNAME }}', repo_name='MSML', mlflow=True)
+          # dagshub.init removed to prevent interactive auth. Env vars handle it.
           runs = mlflow.search_runs(experiment_names=['Bank Marketing Experiment'], order_by=['start_time DESC'], max_results=1)
           if not runs.empty:
               run_id = runs.iloc[0].run_id
