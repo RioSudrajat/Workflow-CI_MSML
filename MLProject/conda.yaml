@@ -1,13 +1,13 @@
 name: bank-marketing-env
 channels:
+  - defaults
   - conda-forge
 dependencies:
-  - python=3.12.7
+  - python=3.8
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+  - mlflow
+  - dagshub
   - pip
-  - pip:
-    - mlflow==2.19.0
-    - scikit-learn
-    - pandas
-    - dagshub
-    - matplotlib
-    - seaborn

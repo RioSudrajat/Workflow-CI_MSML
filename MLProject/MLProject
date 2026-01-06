@@ -1,4 +1,4 @@
-name: Bank Marketing Prediction
+name: Bank_Marketing
 
 conda_env: conda.yaml
 
