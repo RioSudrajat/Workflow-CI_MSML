@@ -26,7 +26,9 @@ jobs:
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
           cd MLProject
-          python modelling.py
+          # Using --env-manager=local to use the environment setup by GitHub Actions (pip install)
+          # this avoids the slow conda setup in CI.
+          mlflow run . --env-manager=local
 
       - name: Upload Model Artifacts
         uses: actions/upload-artifact@v4
